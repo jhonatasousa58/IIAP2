@@ -1,3 +1,10 @@
+# Cria uma matriz de 4 x 13 com valores de 0.01 que correspondem a matriz de probabilidade de cada hipotese
+# e a hipotese de não ser nenhuma doença
+def criar_matriz_sintomas():
+    matriz = [[0.01 for y in range(4)] for x in range(12)]
+    matriz.append([1.0, 1.0, 1.0, 1.0])
+    return matriz
+
 def fuzzyfication(probabilidades_sintomas):
     Hdengue = 0
     Hzika = 1
@@ -177,7 +184,8 @@ def fuzzyfication(probabilidades_sintomas):
 
     return nome, idade, probabilidades_sintomas
 
-
+# Faz o calculo da probabilidade dos sintomas levarem a cada uma das doenças especificadas,
+# ou de não ser nenhuma dela.
 def bayes(probabilidades_sintomas):
     probabilidadep = 1
     divisor = 0
@@ -196,31 +204,39 @@ def bayes(probabilidades_sintomas):
     return probabilidades_hipoteses
 
 
-def run(probabilidades_sintomas):
+def run():
+    #Cria a matriz de probabildiades inicial
+    probabilidades_sintomas = criar_matriz_sintomas()
+
+    # Faz a modelagem dos dados transformando-os em números que possam ser manipulados
     nome, idade, probabilidades_sintomas = fuzzyfication(probabilidades_sintomas)
 
+    # Calcula a propabildiade de ser cada doença com base no teorema de Bayes
     probabilidades_hipoteses = bayes(probabilidades_sintomas)
 
+    # Cria uma matriz com todas as probabilidades de cada doença
     hipoteses = [["Dengue", probabilidades_hipoteses[0]],
                  ["Zika", probabilidades_hipoteses[1]],
                  ["Chikungunya", probabilidades_hipoteses[2]],
                  ["Nenhuma", probabilidades_hipoteses[3]]]
 
+    # Verifica qual a maior probabilidade dentre a probabilidade das doenças
     resultado = max(hipoteses[0][1], hipoteses[1][1], hipoteses[2][1], hipoteses[3][1])
 
     i=0
     while hipoteses[i][1] != resultado:
         i += 1
 
+    # Exibe a doença de maior probabilidade
     print("|---------------------------- Paciente -----------------------------|")
     print("Nome: ", nome)
     print("Idade: ", idade)
     print("|---------------------------- Resultado ----------------------------|")
-    print("   Diagnostico: {} com {:.2f} de porcentagem".format(hipoteses[i][0], hipoteses[i][1] * 100))
+    print("   Diagnostico: {} com {:.2f}% de porcentagem".format(hipoteses[i][0], hipoteses[i][1] * 100))
     print()
 
     print("|---------------------- Outras possibilidades ----------------------|")
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f} de porcentagem".format(hipoteses[0][0], hipoteses[0][1] * 100))
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f} de porcentagem".format(hipoteses[1][0], hipoteses[1][1] * 100))
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f} de porcentagem".format(hipoteses[2][0], hipoteses[2][1] * 100))
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f} de porcentagem".format(hipoteses[3][0], hipoteses[3][1] * 100))
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f}% de porcentagem".format(hipoteses[0][0], hipoteses[0][1] * 100))
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f}% de porcentagem".format(hipoteses[1][0], hipoteses[1][1] * 100))
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f}% de porcentagem".format(hipoteses[2][0], hipoteses[2][1] * 100))
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f}% de porcentagem".format(hipoteses[3][0], hipoteses[3][1] * 100))
