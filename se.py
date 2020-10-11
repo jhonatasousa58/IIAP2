@@ -237,9 +237,3 @@ def run():
     print("|---------------------------- Resultado ----------------------------|")
     print("   Diagnostico: {} com {:.2f}% de porcentagem".format(hipoteses[i][0], hipoteses[i][1] * 100))
     print()
-
-    print("|---------------------- Outras possibilidades ----------------------|")
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f}% de porcentagem".format(hipoteses[0][0], hipoteses[0][1] * 100))
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f}% de porcentagem".format(hipoteses[1][0], hipoteses[1][1] * 100))
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f}% de porcentagem".format(hipoteses[2][0], hipoteses[2][1] * 100))
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f}% de porcentagem".format(hipoteses[3][0], hipoteses[3][1] * 100))
