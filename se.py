@@ -200,24 +200,26 @@ def run(probabilidades_sintomas):
 
     probabilidades_hipoteses = bayes(probabilidades_sintomas)
 
-    dengue = probabilidades_hipoteses[0]
-    zika = probabilidades_hipoteses[1]
-    chik = probabilidades_hipoteses[2]
-    nada = probabilidades_hipoteses[3]
+    hipoteses = [["Dengue", probabilidades_hipoteses[0]],
+                 ["Zika", probabilidades_hipoteses[1]],
+                 ["Chikungunya", probabilidades_hipoteses[2]],
+                 ["Nenhuma", probabilidades_hipoteses[3]]]
 
-    resultado = max(dengue, zika, chik, nada)
+    resultado = max(hipoteses[0][1], hipoteses[1][1], hipoteses[2][1], hipoteses[3][1])
 
-
+    i=0
+    while hipoteses[i][1] != resultado:
+        i += 1
 
     print("|---------------------------- Paciente -----------------------------|")
     print("Nome: ", nome)
     print("Idade: ", idade)
     print("|---------------------------- Resultado ----------------------------|")
-    print("   Diagnostico: ", , "com ", resultado * 100, " de porcentagem")
+    print("   Diagnostico: {} com {:.2f} de porcentagem".format(hipoteses[i][0], hipoteses[i][1] * 100))
     print()
 
-    # print("|---------------------- Outras possibilidades ----------------------|")
-    # print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Dengue com ", dengue * 100, " de porcentagem")
-    # print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Zika com ", zika * 100, " de porcentagem")
-    # print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Chikungunya com ", chik * 100, " de porcentagem")
-    # print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Nada com ", nada * 100, " de porcentagem")
+    print("|---------------------- Outras possibilidades ----------------------|")
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Dengue com ",hipoteses[0][1] * 100, " de porcentagem")
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Zika com ", hipoteses[1][1] * 100, " de porcentagem")
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Chikungunya com ", hipoteses[2][1] * 100, " de porcentagem")
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Nada com ", hipoteses[3][1] * 100, " de porcentagem")
