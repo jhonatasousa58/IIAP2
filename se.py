@@ -10,7 +10,7 @@ def fuzzyfication(probabilidades_sintomas):
     for i in range(12):
         # Sintoma Febre
         if (i == 0):
-            res = input("Voce tem Febre ? (sim ou nao): ")
+            res = input("Voce tem Febre ? (sim ou nao): ").lower()
             # Se nao tiver febre, atribui as probabilidades de ter zika e nada
             if (res == 'nao'):
                 probabilidades_sintomas[i][Hzika] = 1.0
@@ -18,7 +18,7 @@ def fuzzyfication(probabilidades_sintomas):
 
             # Se tiver febre, pergunta se é acima de 38 graus e a quantidade de dias
             elif (res == 'sim'):
-                res = input("Acima de 38 Graus ? (sim ou nao): ")
+                res = input("Acima de 38 Graus ? (sim ou nao): ").lower()
                 res1 = int(input("Quantos dias de febre(1, 2, 3, ...): "))
                 if (res == 'sim'):
                     if (4 <= res1 <= 7):
@@ -48,7 +48,7 @@ def fuzzyfication(probabilidades_sintomas):
         # Sintoma Dor no musculos
         elif (i == 2):
             # Distribui as probabilidades de acordo com a frequencia da dor no musculos
-            res = int(input("Frequencia da dor nos musculos(0 - Nenhuma, 1 - Leve, 2 - Moderada ou 3 - Intensa): "))
+            res = int(input("Frequencia da dor nos musculos(0 - Nenhuma, 1 - +, 2 - ++ ou 3 - +++): "))
             if (res == 0):
                 probabilidades_sintomas[i][Hnada] = 1.0
             elif (res == 1):
@@ -61,7 +61,7 @@ def fuzzyfication(probabilidades_sintomas):
         # Sintoma Dor na articulçao
         elif (i == 3):
             # Distribui as probabilidades de acordo com a frequencia da dor na articulacao
-            res = int(input("Frequencia da dor na Articulacao(0 - Nenhum, 1 - Leve, 2 - Moderada ou 3 - Intensa): "))
+            res = int(input("Frequencia da dor na Articulacao(0 - Nenhum, 1 - +, 2 - ++ ou 3 - +++): "))
             if (res == 0):
                 probabilidades_sintomas[i][Hnada] = 1.0
             elif (res == 1):
@@ -91,18 +91,19 @@ def fuzzyfication(probabilidades_sintomas):
             res = int(input(
                 "Edema da articulacao(1 - Nao, 2 - Frequente e leve Intensidade, 3 - Frequente e de moderada a Intensa): "))
 
-            probabilidades_sintomas[i][Hdengue] = 0.1  # VER ISSO
             if (res == 1):
                 probabilidades_sintomas[i][Hnada] = 1.0
             elif (res == 2):
+                probabilidades_sintomas[i][Hdengue] = 0.1
                 probabilidades_sintomas[i][Hzika] = 1.0
             elif (res == 3):
+                probabilidades_sintomas[i][Hdengue] = 0.1
                 probabilidades_sintomas[i][Hchikungunya] = 1.0
 
         # Sintoma Conjuntivite
         elif (i == 6):
             # Distribui as probabilidades de acordo com as chances de ter determinada doenca
-            res = input("Conjuntivite(sim ou nao): ")
+            res = input("Conjuntivite(sim ou nao): ").lower()
             if (res == 'sim'):
                 probabilidades_sintomas[i][Hdengue] = 0.1
                 probabilidades_sintomas[i][Hzika] = 0.7
@@ -162,7 +163,7 @@ def fuzzyfication(probabilidades_sintomas):
         # Sintoma Acometimento Neurologico
         elif (i == 11):
             # Distribui as probabilidades de acordo com o Acometimento Neurologico
-            res = input("Acometimento Neurologico(sim ou nao): ")
+            res = input("Acometimento Neurologico(sim ou nao): ").lower()
             if (res == 'sim'):
                 probabilidades_sintomas[i][Hdengue] = 0.1
                 probabilidades_sintomas[i][Hzika] = 0.3
@@ -219,7 +220,7 @@ def run(probabilidades_sintomas):
     print()
 
     print("|---------------------- Outras possibilidades ----------------------|")
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Dengue com ",hipoteses[0][1] * 100, " de porcentagem")
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Zika com ", hipoteses[1][1] * 100, " de porcentagem")
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Chikungunya com ", hipoteses[2][1] * 100, " de porcentagem")
-    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: Nada com ", hipoteses[3][1] * 100, " de porcentagem")
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f} de porcentagem".format(hipoteses[0][0], hipoteses[0][1] * 100))
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f} de porcentagem".format(hipoteses[1][0], hipoteses[1][1] * 100))
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f} de porcentagem".format(hipoteses[2][0], hipoteses[2][1] * 100))
+    print("Nome: ", nome, "idade: ", idade, "ano(s). Diagnostico: {} com {:.6f} de porcentagem".format(hipoteses[3][0], hipoteses[3][1] * 100))
