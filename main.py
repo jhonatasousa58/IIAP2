@@ -1,19 +1,3 @@
-lista_perguntas = ['Voce tem Febre ? (sim ou nao): ',
-					'Acima de 38 Graus ? (sim ou nao)',
-					'Quantos dias de febre(1, 2, 3, ...): ',
-					'Manchas na pele(sim ou nao): ',
-					'Surgiu a partir de qual dia(1, 2, 3, ...): ',
-					'Frequencia da dor nos musculos(0 - Nenhuma, 1 - Leve, 2 - Moderada ou 3 - Intensa): ',
-					'Frequencia da dor na Articulacao(0 - Nenhum, 1 - Leve, 2 - Moderada ou 3 - Intensa): ',
-					'Intensidade da dor articular(0 - Nenhuma, 1 - Leve, 2 - Leve/Moderada, 3 - Moderada/Intensa): ',
-					'Edema da articulacao(1 - Nao/Raro, 2 - Frequente e leve Intensidade, 3 - Frequente e de moderada a Intensa): ',
-					'Conjuntivite(sim ou nao): ',
-					'Dor de cabeca - Frequencia e Intensidade(0 - Nenhuma, 1 - Leve, 2 - Moderada ou 3 - Intensa): ',
-					'Coceira(0 - Nenhuma, 1 - Leve, 2 - Moderada ou 3 - Intensa): ',
-					'Frequencia hipertrofia ganglionar(0 - Nenhuma, 1 - Leve, 2 - Moderada ou 3 - Intensa): ',
-					'Frequencia discrasia hemorragica(0 - Nenhuma, 1 - Ausente, 2 - Leve ou 3 - Moderada): ',
-					'Acometimento Neurologico(sim ou nao): ']
-
 probabilidades_Sintomas = [
 	[0.01, 0.01, 0.01, 0.01],
 	[0.01, 0.01, 0.01, 0.01],
