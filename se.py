@@ -5,6 +5,9 @@ def criar_matriz_sintomas():
     matriz.append([1.0, 1.0, 1.0, 1.0])
     return matriz
 
+#Responsavel por pegar as entradas e transformar em valores que possam ser calculados.
+#A funcao pega as respostas das perguntas feitas ao paciente e atribui uma probabilidade.
+#As perguntas sao de acordo os quadro de sintomas fornecido.
 def fuzzyfication(probabilidades_sintomas):
     Hdengue = 0
     Hzika = 1
@@ -218,7 +221,7 @@ def run():
     hipoteses = [["Dengue", probabilidades_hipoteses[0]],
                  ["Zika", probabilidades_hipoteses[1]],
                  ["Chikungunya", probabilidades_hipoteses[2]],
-                 ["Nenhuma", probabilidades_hipoteses[3]]]
+                 ["Doenca nao encontrada", probabilidades_hipoteses[3]]]
 
     # Verifica qual a maior probabilidade dentre a probabilidade das doenças
     resultado = max(hipoteses[0][1], hipoteses[1][1], hipoteses[2][1], hipoteses[3][1])
